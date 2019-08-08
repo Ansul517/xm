@@ -1,16 +1,32 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
+import Vue from 'vue'
 
-Vue.use(Vuex)
 
+Vue.use(Vuex);
 export default new Vuex.Store({
-  state: {
+    state: {
+        Authorization: localStorage.getItem('Authorization') ? localStorage.getItem('Authorization') : ''
 
-  },
-  mutations: {
+        // user: {},
+        // token: null,
+        // title: ''
+    },
+    mutations: {
+        changeLogin(state, account) {
+            state.Authorization = account.Authorization;
+            localStorage.setItem('Authorization', account.Authorization);
+        }
 
-  },
-  actions: {
-
-  }
+        // [types.LOGIN]: (state, data) => {
+        //     localStorage.token = data;
+        //     state.token = data;
+        // },
+        // [types.LOGOUT]: (state) => {
+        //     localStorage.removeItem('token');
+        //     state.token = null
+        // },
+        // [types.TITLE]: (state, data) => {
+        //     state.title = data;
+        // }
+    }
 })
